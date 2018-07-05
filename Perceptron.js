@@ -52,5 +52,3 @@ class Perceptron {
     return this._weights
   }
 }
-
-export default Perceptron

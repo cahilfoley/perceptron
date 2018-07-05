@@ -1,5 +1,3 @@
-import Perceptron from './perceptron.mjs'
-
 // Training config
 const batchSize = 100
 const pointsToShow = 500
@@ -23,6 +21,7 @@ let total
 let renderer
 
 const accuracyOut = document.getElementById('accuracy')
+
 function updateAccuracy(value) {
   const accuracyVal = Number(value * 100).toFixed(2)
   accuracyOut.innerHTML = `${accuracyVal}%`
@@ -32,6 +31,7 @@ function updateAccuracy(value) {
 }
 
 const pointsOut = document.getElementById('points')
+
 function updatePoints(value) {
   pointsOut.innerHTML = `${value} (batches of ${batchSize})`
 }
@@ -74,7 +74,7 @@ function reset() {
   updatePoints(0)
 }
 
-window.setup = () => {
+function setup() {
   renderer = createCanvas(
     document.getElementById('outputWrapper').getBoundingClientRect().width,
     600
@@ -84,7 +84,7 @@ window.setup = () => {
   reset()
 }
 
-window.draw = () => {
+function draw() {
   background(0)
 
   // Draw line f(x)
@@ -135,7 +135,9 @@ window.draw = () => {
       stroke(255, 0, 0)
     }
 
-    const { input } = tVal
+    const {
+      input
+    } = tVal
     const x = map(input[0], xmin, xmax, 0, width)
     const y = map(input[1], ymin, ymax, height, 0)
     ellipse(x, y, 6, 6)
